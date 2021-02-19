@@ -1,15 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(cv_bridge)
 
-set(PYTHONPATH ~/.local/lib/python3.7/site-packages)
-
 find_package(catkin REQUIRED COMPONENTS rosconsole sensor_msgs)
 
-set(PYTHON_EXECUTABLE /usr/bin/python3)
-set(PYTHON_NUMPY_INCLUDE_DIR ~/.local/lib/python3.6/site-packages/numpy/core/include)
-set(PYTHON_INCLUDE_PATH /usr/include/python3.6m)
-set(PYTHON_LIBRARY /usr/lib/x86_64-linux-gnu/libpython3.6m.so)
-set(CPLUS_INCLUDE_PATH /usr/include/python3.6m/)
 if(NOT ANDROID)
   find_package(PythonLibs)
 
@@ -25,7 +18,7 @@ find_package(Boost REQUIRED)
 endif()
 
 set(_opencv_version 4.5)
-find_package(OpenCV 4.5 QUIET)
+find_package(OpenCV 4.5 REQUIRED)
 if(NOT OpenCV_FOUND)
   message(STATUS "Did not find OpenCV 4, trying OpenCV 3")
   set(_opencv_version 3)
